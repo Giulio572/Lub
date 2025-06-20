@@ -7,12 +7,18 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">BERGKRAFT NUTRITION</div>
-    <nav>
-      <a href="produkte.html">Produkte</a>
-    </nav>
-  </header>
+ <header>
+  <div class="logo">BERGKRAFT NUTRITION</div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="produkte.html">Produkte</a>
+    <a href="checkout.html">Warenkorb</a>
+    <a href="agb.html">AGB</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</header>
+
 
   <section class="hero">
     <video autoplay muted loop playsinline>
@@ -26,5 +32,27 @@
       <a class="btn" href="produkte.html">Produkte ansehen</a>
     </div>
   </section>
+
+  <div id="cookie-banner" class="cookie-banner">
+  <p>
+    Diese Website verwendet Cookies, um dir das beste Erlebnis zu bieten. 
+    <a href="datenschutz.html" target="_blank">Mehr erfahren</a>
+  </p>
+  <button onclick="acceptCookies()">OK</button>
+</div>
+
+<script>
+  function acceptCookies() {
+    localStorage.setItem("cookiesAccepted", "true");
+    document.getElementById("cookie-banner").style.display = "none";
+  }
+
+  window.addEventListener("load", function () {
+    if (!localStorage.getItem("cookiesAccepted")) {
+      document.getElementById("cookie-banner").style.display = "flex";
+    }
+  });
+</script>
+
 </body>
 </html>

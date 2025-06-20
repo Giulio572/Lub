@@ -8,39 +8,113 @@
 </head>
 <body>
 
-  <header>
-    <div class="logo">BERGKRAFT NUTRITION</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="produkte.html">Produkte</a>
-    </nav>
-  </header>
+ <header>
+  <div class="logo">BERGKRAFT NUTRITION</div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="produkte.html">Produkte</a>
+    <a href="checkout.html">Warenkorb</a>
+    <a href="agb.html">AGB</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</header>
+
 
   <main class="protein-page">
     <section class="intro">
       <h1>Protein Pulver</h1>
-      <p>Wähle deinen Geschmack und finde das perfekte Protein für dein Training.</p>
+
     </section>
 
     <section class="flavor-grid">
-      <div class="flavor-card">
+      <div class="flavor-card" onclick="openModal('vanille')">
         <img src="vanille.png" alt="Vanille" />
         <h3>Vanille</h3>
       </div>
-      <div class="flavor-card">
+      <div class="flavor-card" onclick="openModal('schoko')">
         <img src="schoko.png" alt="Schokolade" />
         <h3>Schokolade</h3>
       </div>
-      <div class="flavor-card">
+      <div class="flavor-card" onclick="openModal('cookies')">
         <img src="cookies.jpg" alt="Cookies & Cream" />
         <h3>Cookies & Cream</h3>
       </div>
-      <div class="flavor-card">
+      <div class="flavor-card" onclick="openModal('zimt')">
         <img src="zimt.jpg" alt="Zimt" />
         <h3>Zimt</h3>
       </div>
     </section>
   </main>
+
+  <!-- Modal -->
+  <div class="product-modal" id="productModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle">Produktname</h2>
+      <img id="modalImage" src="" alt="" />
+      <p id="modalDescription" class="modal-description"></p>
+
+      <label for="quantity">Menge (in g):</label><br />
+      <input type="number" id="quantity" value="500" min="100" step="100" /><br /><br />
+
+      <button class="btn" onclick="addToCart()">In den Warenkorb</button>
+    </div>
+  </div>
+
+  <script>
+    const products = {
+      vanille: {
+        title: 'Vanille Protein',
+        image: 'vanille.png',
+        description: 'Klassischer Vanillegeschmack mit cremiger Textur – perfekt für jeden Shake.'
+      },
+      schoko: {
+        title: 'Schoko Protein',
+        image: 'schoko.png',
+        description: 'Intensiver Schokogeschmack für echte Kakao-Fans. Ideal für Muskelaufbau.'
+      },
+      cookies: {
+        title: 'Cookies & Cream',
+        image: 'cookies.jpg',
+        description: 'Süßer Genuss mit Cookie-Note – lecker und effektiv zugleich.'
+      },
+      zimt: {
+        title: 'Zimt Protein',
+        image: 'zimt.jpg',
+        description: 'Würziger Zimtgeschmack – für alle, die es etwas spezieller mögen.'
+      }
+    };
+
+    function openModal(productKey) {
+      const product = products[productKey];
+      document.getElementById("modalTitle").textContent = product.title;
+      document.getElementById("modalImage").src = product.image;
+      document.getElementById("modalDescription").textContent = product.description;
+      document.getElementById("productModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("productModal").style.display = "none";
+    }
+
+    function addToCart() {
+      const quantity = parseInt(document.getElementById("quantity").value);
+      const product = document.getElementById("modalTitle").textContent;
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const existing = cart.find(item => item.product === product);
+      if (existing) {
+        existing.quantity += quantity;
+      } else {
+        cart.push({ product, quantity });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${quantity}g ${product} wurde dem Warenkorb hinzugefügt.`);
+      closeModal();
+    }
+  </script>
 
 </body>
 </html>

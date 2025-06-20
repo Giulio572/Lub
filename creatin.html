@@ -2,25 +2,76 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Creatin kaufen – Bergkraft</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creatin – Bergkraft</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
-    <div class="logo">BERGKRAFT</div>
+    <div class="logo">BERGKRAFT NUTRITION</div>
     <nav>
-      <ul>
-        <li><a href="produkte.html">Zurück</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="produkte.html">Produkte</a>
+      <a href="checkout.html">Warenkorb</a>
     </nav>
   </header>
 
-  <section class="creatin-kaufen">
-    <h2>Creatin Monohydrat</h2>
-    <img src="images/creatin-product.jpg" alt="Creatin Produkt" />
-    <p>Hochreines Creatin – Für maximale Leistung & Power.</p>
-    <button class="kaufen-btn">Jetzt kaufen</button>
-  </section>
+  <main class="creatin-page">
+    <h1 class="creatin-title">Creatin</h1>
+    <div class="creatin-container" onclick="openCreatinModal()">
+      <img src="creatinschachtel.png" alt="Creatin Produkt" />
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="product-modal" id="productModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle">Creatin Monohydrat</h2>
+      <img id="modalImage" src="creatinschachtel.png" alt="Creatin" />
+      <p id="modalDescription" class="modal-description">
+        Hochreines Creatin Monohydrat zur Leistungssteigerung beim Training.
+        Unterstützt Muskelwachstum und Kraftentwicklung.
+      </p>
+
+      <label for="quantity">Menge (in g):</label><br />
+      <input type="number" id="quantity" value="500" min="100" step="100" /><br /><br />
+
+      <button class="btn" onclick="addToCart()">In den Warenkorb</button>
+    </div>
+  </div>
+
+  <script>
+    function openCreatinModal() {
+      document.getElementById("modalTitle").textContent = "Creatin Monohydrat";
+      document.getElementById("modalImage").src = "creatinschachtel.png";
+      document.getElementById("modalDescription").textContent =
+        "Hochreines Creatin Monohydrat zur Leistungssteigerung beim Training. Unterstützt Muskelwachstum und Kraftentwicklung.";
+      document.getElementById("productModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("productModal").style.display = "none";
+    }
+
+    function addToCart() {
+      const quantity = parseInt(document.getElementById("quantity").value);
+      const product = document.getElementById("modalTitle").textContent;
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const existing = cart.find(item => item.product === product);
+      if (existing) {
+        existing.quantity += quantity;
+      } else {
+        cart.push({ product, quantity });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${quantity}g ${product} wurde dem Warenkorb hinzugefügt.`);
+      closeModal();
+    }
+  </script>
+
 </body>
 </html>

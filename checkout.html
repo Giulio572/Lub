@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warenkorb – Bergkraft</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+ <header>
+  <div class="logo">BERGKRAFT NUTRITION</div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="produkte.html">Produkte</a>
+    <a href="checkout.html">Warenkorb</a>
+    <a href="agb.html">AGB</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</header>
+
+  <main class="checkout-page">
+    <h1>Warenkorb</h1>
+    <div id="cart-items" class="cart-grid"></div>
+
+    <button class="btn" onclick="checkout()">Jetzt bezahlen</button>
+  </main>
+
+  <script>
+    // Bildzuordnung basierend auf Produktname
+    const imageMap = {
+      "Vanille Protein": "vanille.png",
+      "Schoko Protein": "schoko.png",
+      "Cookies & Cream": "cookies.jpg",
+      "Zimt Protein": "zimt.jpg",
+      "Creatin Monohydrat": "creatinschachtel.png"
+    };
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const container = document.getElementById("cart-items");
+
+    if (cart.length === 0) {
+      container.innerHTML = "<p>Dein Warenkorb ist leer.</p>";
+    } else {
+      cart.forEach(item => {
+        const imgSrc = imageMap[item.product] || "placeholder.jpg";
+        const card = document.createElement("div");
+        card.className = "cart-item";
+
+        card.innerHTML = `
+          <img src="${imgSrc}" alt="${item.product}" />
+          <div>
+            <h3>${item.product}</h3>
+            <p>Menge: ${item.quantity}g</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function checkout() {
+      alert("Bezahlung erfolgreich! 🎉");
+      localStorage.removeItem("cart");
+      location.reload();
+    }
+  </script>
+
+</body>
+</html>
