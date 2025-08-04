@@ -9,14 +9,18 @@
 <body>
  <header>
   <div class="logo">BERGKRAFT NUTRITION</div>
-  <nav class="main-nav">
-    <a href="index.html">Home</a>
-    <a href="produkte.html">Produkte</a>
-  <a href="checkout.html" class="nav-warenkorb">
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav class="main-nav" id="mainNav">
+  <a href="index.html">Home</a>
+  <a href="produkte.html">Produkte</a>
+  <a href="checkout.html">
   Warenkorb
-  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right">
+  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
 </a>
-  </nav>
+
+</nav>
+
 </header>
 
 
@@ -55,7 +59,7 @@
 <footer class="main-footer">
   <div class="newsletter-bar">
     <div class="newsletter-content">
-      <p><strong>📧 Newsletter</strong><br>Jetzt anmelden & profitieren</p>
+      <p><strong>Newsletter</strong><br>Jetzt anmelden & profitieren</p>
       <form class="newsletter-form">
         <input type="email" placeholder="Deine E-Mail" required>
         <button type="submit">Abonnieren</button>
@@ -101,5 +105,13 @@
     <a href="#"><img src="icon-youtube.svg" alt="YouTube" /></a>
   </div>
 </footer>
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("mainNav");
+    nav.classList.toggle("show");
+  }
+</script>
+</body>
+</html>
 </body>
 </html>

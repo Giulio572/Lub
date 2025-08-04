@@ -8,14 +8,20 @@
 </head>
 <body>
 
- <header>
+<header>
   <div class="logo">BERGKRAFT NUTRITION</div>
-  <nav class="main-nav">
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <nav class="main-nav" id="mainNav">
     <a href="index.html">Home</a>
     <a href="produkte.html">Produkte</a>
-    <a href="checkout.html">Warenkorb</a>
+      <a href="checkout.html">
+  Warenkorb
+  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
+</a>
   </nav>
 </header>
+
 
   <main class="checkout-page">
     <h1>Warenkorb</h1>
@@ -62,6 +68,11 @@
       location.reload();
     }
   </script>
-
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("mainNav");
+    nav.classList.toggle("show");
+  }
+</script>
 </body>
 </html>

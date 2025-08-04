@@ -9,13 +9,18 @@
 <body>
 
   <header>
-    <div class="logo">BERGKRAFT NUTRITION</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="produkte.html">Produkte</a>
-      <a href="checkout.html">Warenkorb</a>
-    </nav>
-  </header>
+  <div class="logo">BERGKRAFT NUTRITION</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <nav class="main-nav" id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="produkte.html">Produkte</a>
+     <a href="checkout.html">
+  Warenkorb
+  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
+</a>
+  </nav>
+</header>
 
   <main class="creatin-page">
     <h1 class="creatin-title">Creatin</h1>
@@ -72,6 +77,11 @@
       closeModal();
     }
   </script>
-
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("mainNav");
+    nav.classList.toggle("show");
+  }
+</script>
 </body>
 </html>

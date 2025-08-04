@@ -8,17 +8,23 @@
 </head>
 <body>
 
- <header>
+<header>
   <div class="logo">BERGKRAFT NUTRITION</div>
-  <nav class="main-nav">
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <nav class="main-nav" id="mainNav">
     <a href="index.html">Home</a>
     <a href="produkte.html">Produkte</a>
-    <a href="checkout.html">Warenkorb</a>
+      <a href="checkout.html">
+  Warenkorb
+  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
+</a>
     <a href="agb.html">AGB</a>
     <a href="impressum.html">Impressum</a>
     <a href="datenschutz.html">Datenschutz</a>
   </nav>
 </header>
+
 
 
   <main class="legal-page">
@@ -50,6 +56,11 @@
       Alle Inhalte dieser Webseite wurden sorgfältig geprüft. Für die Richtigkeit, Vollständigkeit und Aktualität kann jedoch keine Haftung übernommen werden.
     </p>
   </main>
-
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("mainNav");
+    nav.classList.toggle("show");
+  }
+</script>
 </body>
 </html>
