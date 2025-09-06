@@ -1,117 +1,143 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bergkraft Nutrition – Start</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
- <header>
-  <div class="logo">BERGKRAFT NUTRITION</div>
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bergkraft Nutrition – Start</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">BERGKRAFT NUTRITION</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-<nav class="main-nav" id="mainNav">
-  <a href="index.html">Home</a>
-  <a href="produkte.html">Produkte</a>
-  <a href="checkout.html">
-  Warenkorb
-  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
-</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="produkte.html">Produkte</a>
+        <a href="checkout.html">
+          Warenkorb
+          <img
+            src="iconmonstr-shopping-cart-23.svg"
+            alt="Warenkorb"
+            class="nav-icon-right"
+          />
+        </a>
+      </nav>
+    </header>
 
-</nav>
+    <section class="hero">
+      <video autoplay muted loop playsinline>
+        <source src="berg.mp4" type="video/mp4" />
+        Dein Browser unterstützt kein Video.
+      </video>
+      <div class="overlay"></div>
 
-</header>
+      <div class="hero-text">
+        <!-- <h1>Bergkraft Nutrition</h1> -->
+        <a class="btn" href="produkte.html">Produkte ansehen</a>
+      </div>
 
+      <div class="hero-logo">
+        <img src="bergkraft-logo-transparent.png" alt="Bergkraft Logo" />
+      </div>
+    </section>
 
-  <section class="hero">
-    <video autoplay muted loop playsinline>
-      <source src="berg.mp4" type="video/mp4" />
-      Dein Browser unterstützt kein Video.
-    </video>
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h1>Bergkraft Nutrition</h1>
-      <a class="btn" href="produkte.html">Produkte ansehen</a>
-    </div>
-  </section>
-
-  <div id="cookie-banner" class="cookie-banner">
-  <p>
-    Diese Website verwendet Cookies, um dir das beste Erlebnis zu bieten. 
-    <a href="datenschutz.html" target="_blank">Mehr erfahren</a>
-  </p>
-  <button onclick="acceptCookies()">OK</button>
-</div>
-
-<script>
-  function acceptCookies() {
-    localStorage.setItem("cookiesAccepted", "true");
-    document.getElementById("cookie-banner").style.display = "none";
-  }
-
-  window.addEventListener("load", function () {
-    if (!localStorage.getItem("cookiesAccepted")) {
-      document.getElementById("cookie-banner").style.display = "flex";
-    }
-  });
-</script>
-<footer class="main-footer">
-  <div class="newsletter-bar">
-    <div class="newsletter-content">
-      <p><strong>Newsletter</strong><br>Jetzt anmelden & profitieren</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Deine E-Mail" required>
-        <button type="submit">Abonnieren</button>
-      </form>
-    </div>
-  </div>
-
-  <div class="footer-columns">
-    <div>
-      <h4>DIE MARKE</h4>
-      <p><strong>Bergkraft Nutrition®</strong><br>Eine Schweizer Marke für hochwertige Supplements.</p>
-      <p>Zertifiziert seit 2023<br>Letzte Kontrolle: 01.01.2025<br>Gültig bis: 01.01.2026</p>
+    <!-- Cookie-Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+      <p>
+        Diese Website verwendet Cookies, um dir das beste Erlebnis zu bieten.
+        <a href="datenschutz.html" target="_blank">Mehr erfahren</a>
+      </p>
+      <button onclick="acceptCookies()">OK</button>
     </div>
 
-    <div>
-      <h4>DAS UNTERNEHMEN</h4>
-      <p>Bergkraft Nutrition<br>Musterstrasse 1<br>8000 Zürich<br>Schweiz</p>
-      <p>CHE-123.456.789 MWST</p>
+    <div class="about-us-section">
+      <h1>Über uns</h1>
+      <p>
+        Wir bei <strong>Bergkraft Nutrition</strong> stehen für Qualität und
+        Schweizer Präzision. Unsere Supplements sind nach höchsten Standards
+        entwickelt und unterstützen dich auf deinem Weg zu mehr Kraft und
+        Fitness.
+      </p>
     </div>
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="newsletter-bar">
+        <div class="newsletter-content">
+          <p><strong>Newsletter</strong><br />Jetzt anmelden & profitieren</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Deine E-Mail" required />
+            <button type="submit">Abonnieren</button>
+          </form>
+        </div>
+      </div>
 
-    <div>
-      <h4>NÜTZLICHE LINKS</h4>
-      <ul>
-        <li><a href="agb.html">AGB</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-      </ul>
-    </div>
+      <div class="footer-columns">
+        <div>
+          <h4>DIE MARKE</h4>
+          <p>
+            <strong>Bergkraft Nutrition®</strong><br />Eine Schweizer Marke für
+            hochwertige Supplements.
+          </p>
+        </div>
+        <div>
+          <h4>DAS UNTERNEHMEN</h4>
+          <p>
+            Bergkraft Nutrition GmbH<br />Pfarrgasse 30<br />8704 Herrliberg<br />Schweiz
+          </p>
+        </div>
+        <div>
+          <h4>NÜTZLICHE LINKS</h4>
+          <ul>
+            <li><a href="agb.html">AGB</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+            <li><a href="impressum.html">Impressum</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>BELIEBTE KATEGORIEN</h4>
+          <ul>
+            <li><a href="protein.html">Protein</a></li>
+            <li><a href="creatin.html">Kreatin</a></li>
+            <li><a href="produkte.html">Alle Produkte</a></li>
+          </ul>
+        </div>
+        <div class="footer-socials">
+          <a
+            href="https://www.instagram.com/bergkraftnutrition?igsh=MTl5aDRxMXlvd3ZvYw=="
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="Instagram.jpg" alt="Instagram" />
+          </a>
 
-    <div>
-      <h4>BELIEBTE KATEGORIEN</h4>
-      <ul>
-        <li><a href="protein.html">Protein</a></li>
-        <li><a href="creatin.html">Creatin</a></li>
-        <li><a href="produkte.html">Alle Produkte</a></li>
-      </ul>
-    </div>
-  </div>
+          <a
+            href="https://www.tiktok.com/@bergkraftnutrition?_t=ZN-8zVFteLOP7m&_r=1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="TikTok.jpg" alt="TikTok" />
+          </a>
+        </div>
+      </div>
+    </footer>
 
-  <div class="footer-socials">
-    <a href="#"><img src="icon-instagram.svg" alt="Instagram" /></a>
-    <a href="#"><img src="icon-facebook.svg" alt="Facebook" /></a>
-    <a href="#"><img src="icon-youtube.svg" alt="YouTube" /></a>
-  </div>
-</footer>
-<script>
-  function toggleMenu() {
-    const nav = document.getElementById("mainNav");
-    nav.classList.toggle("show");
-  }
-</script>
-</body>
-</html>
-</body>
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("mainNav");
+        nav.classList.toggle("show");
+      }
+
+      function acceptCookies() {
+        localStorage.setItem("cookiesAccepted", "true");
+        document.getElementById("cookie-banner").style.display = "none";
+      }
+
+      window.addEventListener("load", function () {
+        if (!localStorage.getItem("cookiesAccepted")) {
+          document.getElementById("cookie-banner").style.display = "flex";
+        }
+      });
+    </script>
+  </body>
 </html>

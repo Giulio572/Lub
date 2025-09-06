@@ -1,87 +1,97 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creatin – Bergkraft</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creatin – Bergkraft</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">BERGKRAFT NUTRITION</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-  <header>
-  <div class="logo">BERGKRAFT NUTRITION</div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="produkte.html">Produkte</a>
+        <a href="checkout.html">
+          Warenkorb
+          <img
+            src="iconmonstr-shopping-cart-23.svg"
+            alt="Warenkorb"
+            class="nav-icon-right"
+          />
+        </a>
+      </nav>
+    </header>
 
-  <nav class="main-nav" id="mainNav">
-    <a href="index.html">Home</a>
-    <a href="produkte.html">Produkte</a>
-     <a href="checkout.html">
-  Warenkorb
-  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
-</a>
-  </nav>
-</header>
+    <main class="creatin-page">
+      <h1 class="creatin-title">Creatin</h1>
+      <div class="creatin-container" onclick="openCreatinModal()">
+        <img src="creatin.jpg" alt="Creatin Produkt" />
+      </div>
+    </main>
 
-  <main class="creatin-page">
-    <h1 class="creatin-title">Creatin</h1>
-    <div class="creatin-container" onclick="openCreatinModal()">
-      <img src="creatinschachtel.png" alt="Creatin Produkt" />
+    <!-- Modal -->
+    <div class="product-modal" id="productModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle">Creatin Monohydrat</h2>
+        <img id="modalImage" src="creatin.jpg" alt="Creatin" />
+        <p id="modalDescription" class="modal-description">
+          Hochreines Creatin Monohydrat zur Leistungssteigerung beim Training.
+          Unterstützt Muskelwachstum und Kraftentwicklung.
+        </p>
+
+        <label for="quantity">Menge (in g):</label><br />
+        <input
+          type="number"
+          id="quantity"
+          value="500"
+          min="100"
+          step="100"
+        /><br /><br />
+
+        <button class="btn" onclick="addToCart()">In den Warenkorb</button>
+      </div>
     </div>
-  </main>
 
-  <!-- Modal -->
-  <div class="product-modal" id="productModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2 id="modalTitle">Creatin Monohydrat</h2>
-      <img id="modalImage" src="creatinschachtel.png" alt="Creatin" />
-      <p id="modalDescription" class="modal-description">
-        Hochreines Creatin Monohydrat zur Leistungssteigerung beim Training.
-        Unterstützt Muskelwachstum und Kraftentwicklung.
-      </p>
-
-      <label for="quantity">Menge (in g):</label><br />
-      <input type="number" id="quantity" value="500" min="100" step="100" /><br /><br />
-
-      <button class="btn" onclick="addToCart()">In den Warenkorb</button>
-    </div>
-  </div>
-
-  <script>
-    function openCreatinModal() {
-      document.getElementById("modalTitle").textContent = "Creatin Monohydrat";
-      document.getElementById("modalImage").src = "creatinschachtel.png";
-      document.getElementById("modalDescription").textContent =
-        "Hochreines Creatin Monohydrat zur Leistungssteigerung beim Training. Unterstützt Muskelwachstum und Kraftentwicklung.";
-      document.getElementById("productModal").style.display = "flex";
-    }
-
-    function closeModal() {
-      document.getElementById("productModal").style.display = "none";
-    }
-
-    function addToCart() {
-      const quantity = parseInt(document.getElementById("quantity").value);
-      const product = document.getElementById("modalTitle").textContent;
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-      const existing = cart.find(item => item.product === product);
-      if (existing) {
-        existing.quantity += quantity;
-      } else {
-        cart.push({ product, quantity });
+    <script>
+      function openCreatinModal() {
+        document.getElementById("modalTitle").textContent =
+          "Creatin Monohydrat";
+        document.getElementById("modalImage").src = "creatin.jpg";
+        document.getElementById("modalDescription").textContent =
+          "Hochreines Creatin Monohydrat zur Leistungssteigerung beim Training. Unterstützt Muskelwachstum und Kraftentwicklung.";
+        document.getElementById("productModal").style.display = "flex";
       }
 
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(`${quantity}g ${product} wurde dem Warenkorb hinzugefügt.`);
-      closeModal();
-    }
-  </script>
-<script>
-  function toggleMenu() {
-    const nav = document.getElementById("mainNav");
-    nav.classList.toggle("show");
-  }
-</script>
-</body>
+      function closeModal() {
+        document.getElementById("productModal").style.display = "none";
+      }
+
+      function addToCart() {
+        const quantity = parseInt(document.getElementById("quantity").value);
+        const product = document.getElementById("modalTitle").textContent;
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existing = cart.find((item) => item.product === product);
+        if (existing) {
+          existing.quantity += quantity;
+        } else {
+          cart.push({ product, quantity });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${quantity}g ${product} wurde dem Warenkorb hinzugefügt.`);
+        closeModal();
+      }
+    </script>
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("mainNav");
+        nav.classList.toggle("show");
+      }
+    </script>
+  </body>
 </html>

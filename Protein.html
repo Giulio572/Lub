@@ -1,128 +1,142 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Protein – Bergkraft</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Protein – Bergkraft</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">BERGKRAFT NUTRITION</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
- <header>
-  <div class="logo">BERGKRAFT NUTRITION</div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="produkte.html">Produkte</a>
+        <a href="checkout.html">
+          Warenkorb
+          <img
+            src="iconmonstr-shopping-cart-23.svg"
+            alt="Warenkorb"
+            class="nav-icon-right"
+          />
+        </a>
+      </nav>
+    </header>
 
-  <nav class="main-nav" id="mainNav">
-    <a href="index.html">Home</a>
-    <a href="produkte.html">Produkte</a>
-      <a href="checkout.html">
-  Warenkorb
-  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
-</a>
-  </nav>
-</header>
+    <main class="protein-page">
+      <section class="intro">
+        <h1>Whey Protein</h1>
+      </section>
 
+      <section class="flavor-grid">
+        <div class="flavor-card" onclick="openModal('vanille')">
+          <img src="vanille.jpg" alt="Vanille" />
+          <h3>Vanille</h3>
+        </div>
+        <div class="flavor-card" onclick="openModal('schoko')">
+          <img src="schoko.jpg" alt="Schokolade" />
+          <h3>Schokolade</h3>
+        </div>
+        <div class="flavor-card" onclick="openModal('zimt')">
+          <img src="matcha.jpg" alt="Zimt" />
+          <h3>Matcha</h3>
+        </div>
+      </section>
+    </main>
 
+    <!-- Modal -->
+    <div class="product-modal" id="productModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle">Produktname</h2>
+        <img id="modalImage" src="" alt="" />
+        <p id="modalDescription" class="modal-description"></p>
 
-  <main class="protein-page">
-    <section class="intro">
-      <h1>Protein Pulver</h1>
+        <label for="quantity">Menge (in g):</label><br />
+        <input
+          type="number"
+          id="quantity"
+          value="500"
+          min="100"
+          step="100"
+        /><br /><br />
 
-    </section>
-
-    <section class="flavor-grid">
-      <div class="flavor-card" onclick="openModal('vanille')">
-        <img src="vanille.png" alt="Vanille" />
-        <h3>Vanille</h3>
+        <button class="btn" onclick="addToCart()">In den Warenkorb</button>
       </div>
-      <div class="flavor-card" onclick="openModal('schoko')">
-        <img src="schoko.png" alt="Schokolade" />
-        <h3>Schokolade</h3>
-      </div>
-      <div class="flavor-card" onclick="openModal('cookies')">
-        <img src="cookies.jpg" alt="Cookies & Cream" />
-        <h3>Cookies & Cream</h3>
-      </div>
-      <div class="flavor-card" onclick="openModal('zimt')">
-        <img src="zimt.jpg" alt="Zimt" />
-        <h3>Zimt</h3>
-      </div>
-    </section>
-  </main>
-
-  <!-- Modal -->
-  <div class="product-modal" id="productModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2 id="modalTitle">Produktname</h2>
-      <img id="modalImage" src="" alt="" />
-      <p id="modalDescription" class="modal-description"></p>
-
-      <label for="quantity">Menge (in g):</label><br />
-      <input type="number" id="quantity" value="500" min="100" step="100" /><br /><br />
-
-      <button class="btn" onclick="addToCart()">In den Warenkorb</button>
     </div>
-  </div>
 
-  <script>
-    const products = {
-      vanille: {
-        title: 'Vanille Protein',
-        image: 'vanille.png',
-        description: 'Klassischer Vanillegeschmack mit cremiger Textur – perfekt für jeden Shake.'
-      },
-      schoko: {
-        title: 'Schoko Protein',
-        image: 'schoko.png',
-        description: 'Intensiver Schokogeschmack für echte Kakao-Fans. Ideal für Muskelaufbau.'
-      },
-      cookies: {
-        title: 'Cookies & Cream',
-        image: 'cookies.jpg',
-        description: 'Süßer Genuss mit Cookie-Note – lecker und effektiv zugleich.'
-      },
-      zimt: {
-        title: 'Zimt Protein',
-        image: 'zimt.jpg',
-        description: 'Würziger Zimtgeschmack – für alle, die es etwas spezieller mögen.'
-      }
-    };
+    <script>
+      const products = {
+        vanille: {
+          title: "Vanille Protein",
+          image: "vanille.jpg",
+          description:
+            "Klassischer Vanillegeschmack mit cremiger Textur – perfekt für jeden Shake.",
+        },
+        schoko: {
+          title: "Schoko Protein",
+          image: "schoko.jpg",
+          description:
+            "Intensiver Schokogeschmack für echte Kakao-Fans. Ideal für Muskelaufbau.",
+        },
+        cookies: {
+          title: "Cookies & Cream",
+          image: "cookies.jpg",
+          description:
+            "Süßer Genuss mit Cookie-Note – lecker und effektiv zugleich.",
+        },
+        zimt: {
+          title: "Zimt Protein",
+          image: "matcha.jpg",
+          description:
+            "Würziger Zimtgeschmack – für alle, die es etwas spezieller mögen.",
+        },
+      };
 
-    function openModal(productKey) {
-      const product = products[productKey];
-      document.getElementById("modalTitle").textContent = product.title;
-      document.getElementById("modalImage").src = product.image;
-      document.getElementById("modalDescription").textContent = product.description;
-      document.getElementById("productModal").style.display = "flex";
-    }
+      const modal = document.getElementById("productModal");
+      const modalContent = modal.querySelector(".modal-content");
 
-    function closeModal() {
-      document.getElementById("productModal").style.display = "none";
-    }
+      function openModal(productKey) {
+        const p = products[productKey];
+        document.getElementById("modalTitle").textContent = p.title;
+        document.getElementById("modalImage").src = p.image;
+        document.getElementById("modalImage").alt = p.title;
+        document.getElementById("modalDescription").textContent = p.description;
 
-    function addToCart() {
-      const quantity = parseInt(document.getElementById("quantity").value);
-      const product = document.getElementById("modalTitle").textContent;
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-      const existing = cart.find(item => item.product === product);
-      if (existing) {
-        existing.quantity += quantity;
-      } else {
-        cart.push({ product, quantity });
+        modal.style.display = "flex"; // zentriert dank CSS
+        document.body.classList.add("modal-open");
       }
 
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(`${quantity}g ${product} wurde dem Warenkorb hinzugefügt.`);
-      closeModal();
-    }
-  </script>
-<script>
-  function toggleMenu() {
-    const nav = document.getElementById("mainNav");
-    nav.classList.toggle("show");
-  }
-</script>
-</body>
+      function closeModal() {
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+      }
+
+      // Klick auf Overlay schließt
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // ESC schließt
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.style.display === "flex") closeModal();
+      });
+
+      function addToCart() {
+        const quantity = parseInt(document.getElementById("quantity").value);
+        const product = document.getElementById("modalTitle").textContent;
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existing = cart.find((item) => item.product === product);
+        if (existing) existing.quantity += quantity;
+        else cart.push({ product, quantity });
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${quantity}g ${product} wurde dem Warenkorb hinzugefügt.`);
+        closeModal();
+      }
+    </script>
+  </body>
 </html>

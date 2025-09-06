@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bergkraft – Produkte</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bergkraft – Produkte</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <header>
+      <div class="logo">BERGKRAFT NUTRITION</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-<body>
-  <header>
-    <div class="logo">BERGKRAFT NUTRITION</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-    <nav class="main-nav" id="mainNav">
-      <a href="index.html">Home</a>
-      <a href="produkte.html">Produkte</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="produkte.html">Produkte</a>
         <a href="checkout.html">
-  Warenkorb
-  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
-</a>
-    </nav>
-  </header>
+          Warenkorb
+          <img
+            src="iconmonstr-shopping-cart-23.svg"
+            alt="Warenkorb"
+            class="nav-icon-right"
+          />
+        </a>
+      </nav>
+    </header>
 
+    <main class="product-overview">
+      <h2 class="product-title">Unsere Produkte</h2>
+      <div class="overview-grid">
+        <a href="protein.html" class="overview-card">
+          <img src="protein.jpg" alt="Protein" />
+          <div class="overlay-text">Protein</div>
+        </a>
+        <a href="creatin.html" class="overview-card">
+          <img src="creatin.jpg" alt="Creatin" />
+          <div class="overlay-text">Kreatin</div>
+        </a>
+      </div>
+    </main>
 
-
-  <main class="product-overview">
-    <h2 class="product-title">Unsere Produkte</h2>
-    <div class="overview-grid">
-      <a href="protein.html" class="overview-card">
-        <img src="protein.jpg" alt="Protein">
-        <div class="overlay-text">Protein</div>
-      </a>
-      <a href="creatin.html" class="overview-card">
-        <img src="creatin.jpg" alt="Creatin">
-        <div class="overlay-text">Creatin</div>
-      </a>
-    </div>
-  </main>
-
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      nav.classList.toggle("show");
-    }
-  </script>
-</body>
-
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("mainNav");
+        nav.classList.toggle("show");
+      }
+    </script>
+  </body>
 </html>
