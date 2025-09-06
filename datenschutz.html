@@ -1,78 +1,141 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Datenschutzerklärung – Bergkraft</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datenschutzerklärung – Bergkraft</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">BERGKRAFT NUTRITION</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-  <header>
-  <div class="logo">BERGKRAFT NUTRITION</div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="produkte.html">Produkte</a>
+        <a href="checkout.html">
+          Warenkorb
+          <img
+            src="iconmonstr-shopping-cart-23.svg"
+            alt="Warenkorb"
+            class="nav-icon-right"
+          />
+        </a>
+      </nav>
+    </header>
 
-  <nav class="main-nav" id="mainNav">
-    <a href="index.html">Home</a>
-    <a href="produkte.html">Produkte</a>
-   <a href="checkout.html">
-  Warenkorb
-  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
-</a>
+    <main class="legal-page">
+      <h1>Datenschutzerklärung</h1>
 
-  </nav>
-</header>
+      <h3>1. Allgemeines</h3>
+      <p>
+        Der Schutz deiner persönlichen Daten ist uns wichtig. Wir behandeln
+        deine Daten vertraulich und entsprechend den gesetzlichen
+        Datenschutzvorschriften der Schweiz (DSG) und der EU (DSGVO).
+      </p>
 
+      <h3>2. Verantwortliche Stelle</h3>
+      <p>
+        Die verantwortliche Stelle für die Erhebung, Verarbeitung und Nutzung
+        Ihrer personenbezogenen Daten im Sinne des schweizerischen
+        Datenschutzgesetzes (DSG) und – soweit anwendbar – der
+        Datenschutz-Grundverordnung (DSGVO) ist: Bergkraft Nutrition<br />
+        Bergkraft Nutrition GmbH<br />
+        Pfarrgasse 30<br />
+        8704 Herrliberg<br />
+        Schweiz<br />
+        E-Mail: info@bergkraftnutrition.ch
+      </p>
 
+      <h3>3. Erhebung und Verarbeitung von Daten</h3>
+      <p>
+        Wir erheben und verarbeiten personenbezogene Daten, wenn Sie unsere
+        Website besuchen, ein Kundenkonto anlegen, Produkte bestellen, Zahlungen
+        tätigen, unseren Newsletter abonnieren oder uns kontaktieren. Hierbei
+        können u. a. Name, Adresse, E-Mail-Adresse, Telefonnummer,
+        Zahlungsinformationen, IP-Adresse und Nutzungsdaten erfasst werden.
+      </p>
 
-  <main class="legal-page">
-    <h1>Datenschutzerklärung</h1>
+      <h3>4. Zwecke der Datenverarbeitung</h3>
+      <p>
+        Wir verwenden Ihre Daten ausschließlich für folgende Zwecke:- Abwicklung
+        von Bestellungen und Zahlungen- Bereitstellung und Verbesserung unserer
+        Website- Kundenkommunikation und Support- Analyse des Nutzerverhaltens
+        zur Optimierung unseres Angebots- Marketingzwecke- Erfüllung
+        gesetzlicher Pflichten
+      </p>
 
-    <h3>1. Allgemeines</h3>
-    <p>
-      Der Schutz deiner persönlichen Daten ist uns wichtig. Wir behandeln deine Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften der Schweiz (DSG) und der EU (DSGVO).
-    </p>
+      <h3>5. Rechtsgrundlagen der Verarbeitung</h3>
+      <p>
+        Wir verarbeiten personenbezogene Daten gemäss DSG und – soweit anwendbar
+        – der DSGVO auf folgenden Rechtsgrundlagen:- Vertragserfüllung-
+        Einwilligung- Berechtigtes Interesse- Erfüllung rechtlicher
+        Verpflichtungen
+      </p>
 
-    <h3>2. Verantwortliche Stelle</h3>
-    <p>
-      Bergkraft Nutrition<br>
-      Max Mustermann<br>
-      Musterstrasse 1<br>
-      8000 Zürich<br>
-      Schweiz<br>
-      E-Mail: kontakt@bergkraft.ch
-    </p>
+      <h3>6. Zahlungsabwicklung über Payrexx</h3>
+      <p>
+        Für die Zahlungsabwicklung nutzen wir Payrexx (Payrexx AG, Burgstrasse
+        18, 3600 Thun, Schweiz). Je nach gewählter Zahlungsmethode können Name,
+        Adresse und Zahlungsinformationen an Payrexx oder deren Partner
+        weitergegeben werden. Weitere Informationen:
+        https://payrexx.com/datenschutz
+      </p>
 
-    <h3>3. Erhebung und Verarbeitung von Daten</h3>
-    <p>
-      Beim Besuch unserer Webseite speichern wir keine personenbezogenen Daten ohne deine Zustimmung. Technische Daten wie IP-Adresse, Browsertyp, Gerätetyp oder Uhrzeit des Zugriffs können anonymisiert erfasst werden.
-    </p>
-
-    <h3>4. Cookies und lokale Speicherung</h3>
-    <p>
-      Unsere Website nutzt Cookies und <strong>localStorage</strong>, um den Warenkorb und Cookie-Einstellungen zu speichern. Diese Daten bleiben auf deinem Gerät und werden nicht an Dritte weitergegeben.
-    </p>
-
-    <h3>5. Zahlungsabwicklung (Stripe, Twint)</h3>
-    <p>
-      Für die Zahlungsabwicklung nutzen wir <strong>Stripe</strong> oder <strong>Twint</strong>. Bei der Bezahlung werden Zahlungsdaten (z. B. Kreditkarteninformationen) direkt an den Zahlungsanbieter übermittelt und nicht auf unserer Seite gespeichert.
-    </p>
-
-    <h3>6. Deine Rechte</h3>
-    <p>
-      Du hast jederzeit das Recht auf Auskunft, Berichtigung oder Löschung deiner Daten. Kontaktiere uns dafür einfach per E-Mail.
-    </p>
-
-    <h3>7. Änderungen</h3>
-    <p>
-      Wir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen. Es gilt die jeweils aktuelle Version auf dieser Seite.
-    </p>
-  </main>
-<script>
-  function toggleMenu() {
-    const nav = document.getElementById("mainNav");
-    nav.classList.toggle("show");
-  }
-</script>
-</body>
+      <h3>7. Cookies und Tracking</h3>
+      <p>
+        Unsere Website verwendet Cookies, um bestimmte Funktionen zu ermöglichen
+        und das Nutzererlebnis zu verbessern. Sie können Ihre
+        Cookie-Einstellungen jederzeit anpassen.
+      </p>
+      <h3>8. Google Analytics</h3>
+      <p>
+        Unsere Website nutzt Google Analytics, einen Webanalysedienst der Google
+        LLC. Wir verwenden die IP-Anonymisierung. Sie können die Erfassung Ihrer
+        Daten durch Google Analytics verhindern, indem Sie das Browser-Add-on
+        installieren: https://tools.google.com/dlpage/gaoptout
+      </p>
+      <h3>9. Social Media Links (Instagram & TikTok)</h3>
+      <p>
+        Unsere Website enthält Links zu unseren Social-Media-Profilen. Beim
+        Anklicken werden Daten an die jeweiligen Plattformen übertragen. Bitte
+        beachten Sie deren Datenschutzrichtlinien:- Instagram Datenschutz-
+        TikTok Datenschutz
+      </p>
+      <h3>10. Rechte der betroffenen Personen</h3>
+      <p>
+        Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung
+        der Verarbeitung, Widerspruch sowie Widerruf Ihrer Einwilligung.
+        Kontaktieren Sie uns per E-Mail: info@bergkraftnutrition.ch
+      </p>
+      <h3>11. Datensicherheit</h3>
+      <p>
+        Wir setzen technische und organisatorische Sicherheitsmaßnahmen ein, um
+        Ihre Daten gegen Manipulation, Verlust oder unbefugten Zugriff zu
+        schützen.
+      </p>
+      <h3>12. Kontakt und Beschwerden</h3>
+      <p>
+        Bei Fragen oder Beschwerden wenden Sie sich bitte an:<br />
+        <strong>Bergkraft Nutrition GmbH</strong><br />
+        Pfarrgasse 30<br />
+        8704 Herrliberg<br />
+        E-Mail: info@bergkraftnutrition.ch <br />
+        <br />
+        Zuständige Aufsichtsbehörde: EDÖB
+      </p>
+      <h3>13. Änderungen dieser Datenschutzerklärung</h3>
+      <p>
+        Wir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen.
+        Maßgeblich ist jeweils die aktuelle Version auf unserer Website.
+      </p>
+    </main>
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("mainNav");
+        nav.classList.toggle("show");
+      }
+    </script>
+  </body>
 </html>
