@@ -661,3 +661,145 @@ body.modal-open {
   border-radius: 8px;
   margin-bottom: 0.8rem;
 }
+/* Produktseite clean layout */
+.product-page {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.product-img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  margin: 0 auto 24px;
+  display: block;
+}
+
+.product-page h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.product-desc {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.buy-form {
+  margin-top: 20px;
+}
+
+.buy-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.buy-form input[type="number"] {
+  width: 90px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #111;
+  color: #f7f7f7;
+  text-align: center;
+  margin-bottom: 16px;
+}
+/* ---------- Ghost-Link "Mehr lesen" ---------- */
+.link-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #f7f7f7;
+  opacity: 0.9;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.link-ghost .arrow {
+  transform: translateX(0);
+  transition: transform 0.2s ease;
+}
+.link-ghost:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.link-ghost:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Platz nach dem About-Text auf der Startseite */
+.about-us-section .link-ghost {
+  margin-top: 10px;
+}
+
+/* ---------- Über-uns Seite ---------- */
+.about-hero {
+  position: relative;
+  background: linear-gradient(180deg, #121212, #0e0e0e);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 48px 20px;
+  text-align: center;
+}
+.about-hero-inner h1 {
+  font-size: 2rem;
+  margin: 0 0 8px;
+}
+.about-hero-inner p {
+  color: #cfcfcf;
+  margin: 0;
+}
+
+.about-page {
+  max-width: 1000px;
+  margin: 32px auto 60px;
+  padding: 0 20px;
+}
+
+.about-block {
+  background: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.about-block h2 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+.about-block h3 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+.about-block p {
+  color: #d6d6d6;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.about-cta {
+  margin-top: 12px;
+  text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}

@@ -10,7 +10,6 @@
     <header>
       <div class="logo">BERGKRAFT NUTRITION</div>
       <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
       <nav class="main-nav" id="mainNav">
         <a href="index.html">Home</a>
         <a href="produkte.html">Produkte</a>
@@ -26,67 +25,18 @@
     </header>
 
     <main class="creatin-page">
-      <h1 class="creatin-title">Creatin</h1>
-      <div class="creatin-container" onclick="openCreatinModal()">
-        <img src="creatin.jpg" alt="Creatin Produkt" />
-      </div>
+      <section class="intro">
+        <h1>Creatin</h1>
+      </section>
+
+      <section class="flavor-grid">
+        <a class="flavor-card" href="produkt-creatin.html">
+          <img src="creatin.jpg" alt="Kreatin" />
+          <h3>Kreatin</h3>
+        </a>
+      </section>
     </main>
 
-    <!-- Modal -->
-    <div class="product-modal" id="productModal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle">Creatin Monohydrat</h2>
-        <img id="modalImage" src="creatin.jpg" alt="Creatin" />
-        <p id="modalDescription" class="modal-description">
-          Hochreines Creatin Monohydrat zur Leistungssteigerung beim Training.
-          Unterstützt Muskelwachstum und Kraftentwicklung.
-        </p>
-
-        <label for="quantity">Menge (in g):</label><br />
-        <input
-          type="number"
-          id="quantity"
-          value="500"
-          min="100"
-          step="100"
-        /><br /><br />
-
-        <button class="btn" onclick="addToCart()">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <script>
-      function openCreatinModal() {
-        document.getElementById("modalTitle").textContent =
-          "Creatin Monohydrat";
-        document.getElementById("modalImage").src = "creatin.jpg";
-        document.getElementById("modalDescription").textContent =
-          "Hochreines Creatin Monohydrat zur Leistungssteigerung beim Training. Unterstützt Muskelwachstum und Kraftentwicklung.";
-        document.getElementById("productModal").style.display = "flex";
-      }
-
-      function closeModal() {
-        document.getElementById("productModal").style.display = "none";
-      }
-
-      function addToCart() {
-        const quantity = parseInt(document.getElementById("quantity").value);
-        const product = document.getElementById("modalTitle").textContent;
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        const existing = cart.find((item) => item.product === product);
-        if (existing) {
-          existing.quantity += quantity;
-        } else {
-          cart.push({ product, quantity });
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-        alert(`${quantity}g ${product} wurde dem Warenkorb hinzugefügt.`);
-        closeModal();
-      }
-    </script>
     <script>
       function toggleMenu() {
         const nav = document.getElementById("mainNav");

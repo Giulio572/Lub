@@ -1,78 +1,185 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Warenkorb – Bergkraft</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warenkorb – Bergkraft</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">BERGKRAFT NUTRITION</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="produkte.html">Produkte</a>
+        <a href="checkout.html">
+          Warenkorb
+          <img
+            src="iconmonstr-shopping-cart-23.svg"
+            alt="Warenkorb"
+            class="nav-icon-right"
+          />
+        </a>
+      </nav>
+    </header>
 
-<header>
-  <div class="logo">BERGKRAFT NUTRITION</div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <main class="checkout-page">
+      <h1>Warenkorb</h1>
+      <div id="cart-items" class="cart-grid"></div>
 
-  <nav class="main-nav" id="mainNav">
-    <a href="index.html">Home</a>
-    <a href="produkte.html">Produkte</a>
-      <a href="checkout.html">
-  Warenkorb
-  <img src="iconmonstr-shopping-cart-23.svg" alt="Warenkorb" class="nav-icon-right" />
-</a>
-  </nav>
-</header>
+      <div class="cart-total">
+        <span>Zwischensumme</span>
+        <strong id="cartSubtotal">CHF 0.00</strong>
+      </div>
 
+      <button class="btn" onclick="checkout()">Jetzt bezahlen</button>
+    </main>
 
-  <main class="checkout-page">
-    <h1>Warenkorb</h1>
-    <div id="cart-items" class="cart-grid"></div>
-
-    <button class="btn" onclick="checkout()">Jetzt bezahlen</button>
-  </main>
-
-  <script>
-    // Bildzuordnung basierend auf Produktname
-    const imageMap = {
-      "Vanille Protein": "vanille.png",
-      "Schoko Protein": "schoko.png",
-      "Cookies & Cream": "cookies.jpg",
-      "Zimt Protein": "zimt.jpg",
-      "Creatin Monohydrat": "creatinschachtel.png"
-    };
-
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const container = document.getElementById("cart-items");
-
-    if (cart.length === 0) {
-      container.innerHTML = "<p>Dein Warenkorb ist leer.</p>";
-    } else {
-      cart.forEach(item => {
-        const imgSrc = imageMap[item.product] || "placeholder.jpg";
-        const card = document.createElement("div");
-        card.className = "cart-item";
-
-        card.innerHTML = `
-          <img src="${imgSrc}" alt="${item.product}" />
-          <div>
-            <h3>${item.product}</h3>
-            <p>Menge: ${item.quantity}g</p>
-          </div>
-        `;
-        container.appendChild(card);
+    <script>
+      // --- Helpers
+      const CHF = new Intl.NumberFormat("de-CH", {
+        style: "currency",
+        currency: "CHF",
       });
-    }
+      function loadCart() {
+        return JSON.parse(localStorage.getItem("cart") || "[]");
+      }
+      function saveCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
 
-    function checkout() {
-      alert("Bezahlung erfolgreich! 🎉");
-      localStorage.removeItem("cart");
-      location.reload();
-    }
-  </script>
-<script>
-  function toggleMenu() {
-    const nav = document.getElementById("mainNav");
-    nav.classList.toggle("show");
-  }
-</script>
-</body>
+      // --- URL-Parameter → in localStorage (merge)
+      (function syncFromQuery() {
+        const params = new URLSearchParams(location.search);
+        if (!params.has("product")) return;
+
+        const product = params.get("product");
+        const qty = Math.max(1, parseInt(params.get("qty") || "1", 10));
+        const price = parseFloat(
+          (params.get("price") || "0").replace(",", ".")
+        );
+        const image = params.get("image") || "placeholder.jpg";
+
+        let cart = loadCart();
+        const existing = cart.find((i) => i.product === product);
+        if (existing) {
+          // neues Feld qty (Pakete)
+          existing.qty = (existing.qty || 0) + qty;
+          // optional: falls noch kein Preis/Image dran
+          if (existing.price == null) existing.price = price;
+          if (!existing.image) existing.image = image;
+        } else {
+          cart.push({ product, qty, price, image });
+        }
+        saveCart(cart);
+
+        // URL aufräumen (keine doppelten Adds beim Reload)
+        history.replaceState({}, "", "checkout.html");
+      })();
+
+      // --- Render
+      function renderCart() {
+        const container = document.getElementById("cart-items");
+        const subtotalEl = document.getElementById("cartSubtotal");
+        const cart = loadCart();
+
+        if (cart.length === 0) {
+          container.innerHTML = "<p>Dein Warenkorb ist leer.</p>";
+          subtotalEl.textContent = CHF.format(0);
+          return;
+        }
+
+        container.innerHTML = "";
+        let subtotal = 0;
+
+        cart.forEach((item, idx) => {
+          // Abwärtskompatibilität: alte Einträge hatten item.quantity in Gramm
+          const qtyPackages = item.qty ?? null;
+          const isOldGrams =
+            qtyPackages == null && typeof item.quantity === "number";
+
+          const unitPrice = item.price ?? 0; // Preis pro Paket (falls vorhanden)
+          const lineTotal = qtyPackages ? unitPrice * qtyPackages : 0;
+          subtotal += lineTotal;
+
+          const card = document.createElement("div");
+          card.className = "cart-item";
+          card.innerHTML = `
+        <img src="${item.image || "placeholder.jpg"}" alt="${item.product}" />
+        <div class="cart-item-info">
+          <h3>${item.product}</h3>
+          <p class="cart-meta">
+            ${
+              qtyPackages != null
+                ? `Menge: <strong>${qtyPackages}</strong> Paket(e)${
+                    unitPrice ? ` · Einzelpreis: ${CHF.format(unitPrice)}` : ""
+                  }`
+                : `Menge: <strong>${item.quantity} g</strong> (alter Eintrag)`
+            }
+          </p>
+          ${
+            qtyPackages != null
+              ? `<p class="cart-line-total">Zwischensumme: <strong>${CHF.format(
+                  lineTotal
+                )}</strong></p>`
+              : ""
+          }
+          <div class="cart-actions">
+            ${
+              qtyPackages != null
+                ? `
+                <button data-action="dec" data-index="${idx}">−</button>
+                <button data-action="inc" data-index="${idx}">+</button>
+              `
+                : ""
+            }
+            <button data-action="remove" data-index="${idx}">Entfernen</button>
+          </div>
+        </div>
+      `;
+          container.appendChild(card);
+        });
+
+        subtotalEl.textContent = CHF.format(subtotal);
+
+        // Buttons (inc/dec/remove)
+        container.addEventListener(
+          "click",
+          (e) => {
+            const btn = e.target.closest("button[data-action]");
+            if (!btn) return;
+            const action = btn.dataset.action;
+            const i = parseInt(btn.dataset.index, 10);
+            const cart = loadCart();
+
+            if (action === "remove") {
+              cart.splice(i, 1);
+            } else if (action === "inc") {
+              cart[i].qty = (cart[i].qty || 1) + 1;
+            } else if (action === "dec") {
+              cart[i].qty = Math.max(1, (cart[i].qty || 1) - 1);
+            }
+            saveCart(cart);
+            renderCart();
+          },
+          { once: true }
+        ); // neu binden nach jedem Render
+      }
+
+      function checkout() {
+        alert("Bezahlung erfolgreich! 🎉");
+        localStorage.removeItem("cart");
+        location.reload();
+      }
+
+      function toggleMenu() {
+        const nav = document.getElementById("mainNav");
+        nav.classList.toggle("show");
+      }
+
+      // initial
+      renderCart();
+    </script>
+  </body>
 </html>

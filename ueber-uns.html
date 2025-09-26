@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Über uns – Bergkraft Nutrition</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">BERGKRAFT NUTRITION</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="produkte.html">Produkte</a>
+        <a href="checkout.html">
+          Warenkorb
+          <img
+            src="iconmonstr-shopping-cart-23.svg"
+            alt="Warenkorb"
+            class="nav-icon-right"
+          />
+        </a>
+      </nav>
+    </header>
+
+    <!-- Optional Hero (kannst du ein Bild setzen) -->
+    <section class="about-hero">
+      <div class="about-hero-inner">
+        <h1>Über Bergkraft Nutrition</h1>
+        <p>Qualität. Transparenz. Schweizer Präzision.</p>
+      </div>
+    </section>
+
+    <main class="about-page">
+      <section class="about-block">
+        <h2>Unsere Mission</h2>
+        <p>
+          Wir entwickeln Supplements, die halten, was sie versprechen – ohne
+          Schnickschnack. Klare Zutatenlisten, nachvollziehbare Herkunft und
+          ehrliche Qualität.
+        </p>
+      </section>
+
+      <section class="about-block grid-2">
+        <div>
+          <h3>Qualität & Rohstoffe</h3>
+          <p>
+            Wir wählen Rohstoffe nach strengen Kriterien aus und arbeiten mit
+            zertifizierten Partnern. Jede Charge wird geprüft – Konsistenz und
+            Sicherheit haben Priorität.
+          </p>
+        </div>
+        <div>
+          <h3>Herstellung</h3>
+          <p>
+            Produziert unter hohen Standards – kurze Wege, faire Partnerschaften
+            und stabile Qualität, auf die du dich verlassen kannst.
+          </p>
+        </div>
+      </section>
+
+      <section class="about-block grid-2">
+        <div>
+          <h3>Nachhaltigkeit</h3>
+          <p>
+            Wir optimieren kontinuierlich Verpackung und Logistik, reduzieren
+            Materialeinsatz und bevorzugen recyclebare Lösungen.
+          </p>
+        </div>
+        <div>
+          <h3>Transparenz</h3>
+          <p>
+            Klare Nährwertangaben, eindeutige Dosierungen und offene
+            Kommunikation. Wenn wir etwas ändern, sagen wir es.
+          </p>
+        </div>
+      </section>
+
+      <section class="about-block">
+        <h2>Standort & Kontakt</h2>
+        <p>
+          Bergkraft Nutrition GmbH<br />
+          Pfarrgasse 30, 8704 Herrliberg, Schweiz
+        </p>
+        <div class="about-cta">
+          <a class="btn" href="produkte.html">Produkte ansehen</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <!-- Optional: du kannst hier deinen bestehenden Footer reinkopieren
+         oder diese Seite ohne Footer lassen -->
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("mainNav");
+        nav.classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>

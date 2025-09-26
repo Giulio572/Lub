@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kreatin – Bergkraft</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">BERGKRAFT NUTRITION</div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="produkte.html">Produkte</a>
+        <a href="checkout.html">Warenkorb</a>
+      </nav>
+    </header>
+
+    <main class="product-page">
+      <img src="creatin.jpg" alt="Kreatin" class="product-img" />
+
+      <h1>Kreatin Monohydrat</h1>
+      <p class="product-desc">
+        Reines Creatin Monohydrat (Creapure®) in höchster Qualität. Unterstützt
+        Kraftsteigerung und Muskelregeneration – geschmacksneutral, optimal
+        löslich.
+      </p>
+
+      <p class="price">CHF 29.90 pro Paket</p>
+
+      <form action="checkout.html" method="GET" class="buy-form">
+        <!-- Hidden-Felder für Warenkorb -->
+        <input type="hidden" name="product" value="Kreatin Monohydrat" />
+        <input type="hidden" name="price" value="29.90" />
+        <input type="hidden" name="image" value="creatin.jpg" />
+
+        <label for="qty">Menge (Pakete):</label>
+        <input type="number" id="qty" name="qty" value="1" min="1" />
+        <button type="submit" class="btn">In den Warenkorb</button>
+      </form>
+    </main>
+  </body>
+</html>

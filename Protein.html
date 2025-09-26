@@ -31,112 +31,19 @@
       </section>
 
       <section class="flavor-grid">
-        <div class="flavor-card" onclick="openModal('vanille')">
+        <a class="flavor-card" href="produkt-vanille.html">
           <img src="vanille.jpg" alt="Vanille" />
           <h3>Vanille</h3>
-        </div>
-        <div class="flavor-card" onclick="openModal('schoko')">
+        </a>
+        <a class="flavor-card" href="produkt-schoko.html">
           <img src="schoko.jpg" alt="Schokolade" />
           <h3>Schokolade</h3>
-        </div>
-        <div class="flavor-card" onclick="openModal('zimt')">
-          <img src="matcha.jpg" alt="Zimt" />
+        </a>
+        <a class="flavor-card" href="produkt-matcha.html">
+          <img src="matcha.jpg" alt="Matcha" />
           <h3>Matcha</h3>
-        </div>
+        </a>
       </section>
     </main>
-
-    <!-- Modal -->
-    <div class="product-modal" id="productModal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle">Produktname</h2>
-        <img id="modalImage" src="" alt="" />
-        <p id="modalDescription" class="modal-description"></p>
-
-        <label for="quantity">Menge (in g):</label><br />
-        <input
-          type="number"
-          id="quantity"
-          value="500"
-          min="100"
-          step="100"
-        /><br /><br />
-
-        <button class="btn" onclick="addToCart()">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <script>
-      const products = {
-        vanille: {
-          title: "Vanille Protein",
-          image: "vanille.jpg",
-          description:
-            "Klassischer Vanillegeschmack mit cremiger Textur – perfekt für jeden Shake.",
-        },
-        schoko: {
-          title: "Schoko Protein",
-          image: "schoko.jpg",
-          description:
-            "Intensiver Schokogeschmack für echte Kakao-Fans. Ideal für Muskelaufbau.",
-        },
-        cookies: {
-          title: "Cookies & Cream",
-          image: "cookies.jpg",
-          description:
-            "Süßer Genuss mit Cookie-Note – lecker und effektiv zugleich.",
-        },
-        zimt: {
-          title: "Zimt Protein",
-          image: "matcha.jpg",
-          description:
-            "Würziger Zimtgeschmack – für alle, die es etwas spezieller mögen.",
-        },
-      };
-
-      const modal = document.getElementById("productModal");
-      const modalContent = modal.querySelector(".modal-content");
-
-      function openModal(productKey) {
-        const p = products[productKey];
-        document.getElementById("modalTitle").textContent = p.title;
-        document.getElementById("modalImage").src = p.image;
-        document.getElementById("modalImage").alt = p.title;
-        document.getElementById("modalDescription").textContent = p.description;
-
-        modal.style.display = "flex"; // zentriert dank CSS
-        document.body.classList.add("modal-open");
-      }
-
-      function closeModal() {
-        modal.style.display = "none";
-        document.body.classList.remove("modal-open");
-      }
-
-      // Klick auf Overlay schließt
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) closeModal();
-      });
-
-      // ESC schließt
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.style.display === "flex") closeModal();
-      });
-
-      function addToCart() {
-        const quantity = parseInt(document.getElementById("quantity").value);
-        const product = document.getElementById("modalTitle").textContent;
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        const existing = cart.find((item) => item.product === product);
-        if (existing) existing.quantity += quantity;
-        else cart.push({ product, quantity });
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-        alert(`${quantity}g ${product} wurde dem Warenkorb hinzugefügt.`);
-        closeModal();
-      }
-    </script>
   </body>
 </html>
